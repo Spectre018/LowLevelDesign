@@ -1,0 +1,4 @@
+In this UML  Design we can do few changes to uptake design patterns.
+
+1. Use Factory desugn pattern to create Seat and Screen
+2. Use Strategy design pattern for Payments gateway
