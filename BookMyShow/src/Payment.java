@@ -12,5 +12,6 @@ public class Payment {
 
     public void completePayment(){
         System.out.println("Payment of "+totalPrice+" by "+paymentMode+" is successful");
+
     }
 }

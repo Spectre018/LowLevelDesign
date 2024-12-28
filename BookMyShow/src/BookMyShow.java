@@ -54,10 +54,11 @@ public class BookMyShow {
         List<Integer> selectedSeats = new ArrayList<>();
 //        interestedShow.setListOfBookedSeats(new ArrayList<>());
         selectedSeats = interestedShow.getListOfBookedSeats();
+        Booking booking = new Booking();
         int totalPrice = 0;
         if(!selectedSeats.contains(seatNumber)){
             selectedSeats.add(seatNumber);
-            Booking booking = new Booking();
+            interestedShow.setListOfBookedSeats(selectedSeats);
 
             List<Seat> bookedSeats = new ArrayList<>();
 
@@ -65,18 +66,21 @@ public class BookMyShow {
                 if(screenSeat.getSeatId() == seatNumber){
                     bookedSeats.add(screenSeat);
                     totalPrice = totalPrice + screenSeat.getPrice();
+
                 }
             }
 
             booking.setShow(interestedShow);
             booking.setBookedSeat(bookedSeats);
+            String val = "Screen - "+interestedShow.getScreen().screenName+" Seat - "+interestedShow.getListOfBookedSeats();
+            System.out.println(val);
 
         }else{
             System.out.println("Booking Unsuccessful");
         }
-        Payment payment = new Payment(1,totalPrice, PaymentMode.CARD);
-        payment.completePayment();
-        System.out.println("Booking Successful");
+        booking.makePayment(new Payment(1,totalPrice, PaymentMode.CARD));
+
+
     }
 
     private void addMovies(){

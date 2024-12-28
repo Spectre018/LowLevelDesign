@@ -37,4 +37,9 @@ public class Booking {
     public void setShow(Show show) {
         this.show = show;
     }
+
+    public void makePayment(Payment payment){
+        payment.completePayment();
+        System.out.println("Booking Successful");
+    }
 }
